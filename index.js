@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({
 
 console.log(process.env.SECRET);
 app.use('/register', register);
-app.use('/login', expressJwt({secret:process.env.SECRET}), login);
+app.use('/login', /*expressJwt({secret:process.env.SECRET}),*/ login);
 app.use('/win', win);
 app.use('/loss', loss);
 app.use('/leaders', leaders);
