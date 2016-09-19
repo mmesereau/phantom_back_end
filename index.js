@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express');
+var bodyParser = require('body-parser');
 var cors = require('cors');
 require('dotenv').config();
 var app = express();
@@ -14,6 +15,13 @@ var login = require('./routes/login.js');
 var win = require('./routes/win.js');
 var loss = require('./routes/loss.js');
 var leaders = require('./routes/leaders.js');
+
+// app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 
 app.use('/register', register);
 app.use('/login', login);

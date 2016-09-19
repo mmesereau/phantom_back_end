@@ -8,7 +8,6 @@ var bcrypt = require('bcrypt');
 router.post('/', function(req, res) {
   hash(req.body.password)
   .then(function(result) {
-    console.log("1");
     return knex('users').insert({
       username: req.body.username,
       password: result,
@@ -18,7 +17,6 @@ router.post('/', function(req, res) {
     })
   })
   .then(function(data) {
-    console.log("2");
     res.send("SUCCESS");
   })
   .catch(function(err) {
