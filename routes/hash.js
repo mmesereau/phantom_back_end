@@ -19,4 +19,6 @@ function hash(password) {
     });
 }
 
+console.log(hash('12345'));
+
 module.exports = hash;
