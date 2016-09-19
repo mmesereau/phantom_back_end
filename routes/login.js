@@ -5,7 +5,7 @@ var knex = require('../db/knex');
 var bcrypt = require('bcrypt');
 
 
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
   knex('users').where('username', req.body.username)
   .then(function(data) {
     return bcrypt.compare(req.body.password, data[0].password, function(err, result) {
