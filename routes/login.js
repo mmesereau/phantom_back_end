@@ -8,6 +8,8 @@ var bcrypt = require('bcrypt');
 router.post('/', function(req, res) {
   knex('users').where('username', req.body.username)
   .then(function(data) {
+    console.log(data);
+    console.log(req.body);
     return bcrypt.compare(req.body.password, data[0].password, function(err, result) {
       if (result) {
         var profile = {
@@ -17,7 +19,7 @@ router.post('/', function(req, res) {
           wins: data[0].wins,
           losses: data[0].losses
         };
-        var token = jwt.sign(profile);
+        var token = jwt.sign(profile, process.env.SECRET);
         res.status(200).json({
           token: token
         });
@@ -25,11 +27,10 @@ router.post('/', function(req, res) {
       else {
         console.log(err);
       }
-    })
-    .catch(function(err) {
-      console.log(err);
     });
-    //TODO: json web token
+  })
+  .catch(function(err) {
+    console.log(err);
   });
 });
 
