@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-
+console.log(process.env.SECRET);
 app.use('/register', register);
 app.use('/login', expressJwt({secret:process.env.SECRET}), login);
 app.use('/win', win);
