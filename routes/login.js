@@ -26,11 +26,17 @@ router.post('/', function(req, res) {
       }
       else {
         console.log(err);
+        res.status(400).json({
+          message: err
+        });
       }
     });
   })
   .catch(function(err) {
     console.log(err);
+    res.status(400).json({
+      message: err
+    });
   });
 });
 
