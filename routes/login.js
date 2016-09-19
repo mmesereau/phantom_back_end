@@ -11,7 +11,7 @@ router.post('/', function(req, res) {
     console.log(data);
     console.log(req.body);
     return bcrypt.compare(req.body.password, data[0].password, function(err, result) {
-      if (result) {
+      if (result === true) {
         var profile = {
           id: data[0].id,
           username: data[0].username,
@@ -25,6 +25,7 @@ router.post('/', function(req, res) {
         });
       }
       else {
+        console.log(result);
         console.log("hello", err);
         res.status(400).json({
           message: err
