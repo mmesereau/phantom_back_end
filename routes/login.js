@@ -26,6 +26,7 @@ router.post('/', function(req, res) {
         res.status(400).json({
           message: err
         });
+        res.send(data);
       }
     });
   })
