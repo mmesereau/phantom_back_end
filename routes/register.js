@@ -17,6 +17,7 @@ router.post('/', function(req, res) {
     })
   })
   .then(function(data) {
+    console.log(data);
     res.send("SUCCESS");
   })
   .catch(function(err) {
