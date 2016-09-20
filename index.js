@@ -23,13 +23,12 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-console.log(process.env.SECRET);
 app.use('/register', register);
 app.use('/login', login);
 app.use('/win', win);
 app.use('/loss', loss);
 app.use('/leaders', leaders);
-app.use('/profile', expressJwt({secret:process.env.SECRET}), profile);
+app.use('/profile', profile);
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
