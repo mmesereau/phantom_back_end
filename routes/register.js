@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
       nickname: req.body.nickname,
       wins: 0,
       losses: 0
-    })
+    }).returning('*');
   })
   .then(function(data) {
     console.log(data);
