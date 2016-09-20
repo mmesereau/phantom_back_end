@@ -1,5 +1,6 @@
 'use strict';
 var router = require('express').Router();
+var jwt = require('jsonwebtoken');
 var knex = require('../db/knex');
 var hash = require('./hash');
 var bcrypt = require('bcrypt');
