@@ -3,6 +3,7 @@ var router = require('express').Router();
 var knex = require('../db/knex');
 
 router.get('/', function(req, res) {
+  console.log(req.user);
   knex('users').where('id', req.user.id)
   .then(function(data) {
     res.send(data);
