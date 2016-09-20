@@ -15,6 +15,7 @@ var login = require('./routes/login.js');
 var win = require('./routes/win.js');
 var loss = require('./routes/loss.js');
 var leaders = require('./routes/leaders.js');
+var profile = require('./routes/profile.js');
 
 // app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -24,10 +25,11 @@ app.use(bodyParser.urlencoded({
 
 console.log(process.env.SECRET);
 app.use('/register', register);
-app.use('/login', /*expressJwt({secret:process.env.SECRET}),*/ login);
+app.use('/login', login);
 app.use('/win', win);
 app.use('/loss', loss);
 app.use('/leaders', leaders);
+app.use('/profile', expressJwt({secret:process.env.SECRET}), profile);
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

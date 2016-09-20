@@ -8,8 +8,6 @@ var bcrypt = require('bcrypt');
 router.post('/', function(req, res) {
   knex('users').where('username', req.body.username)
   .then(function(data) {
-    console.log(data);
-    console.log(req.body);
     return bcrypt.compare(req.body.password, data[0].password, function(err, result) {
       if (result === true) {
         var profile = {
@@ -25,8 +23,6 @@ router.post('/', function(req, res) {
         });
       }
       else {
-        console.log(result);
-        console.log("hello", err);
         res.status(400).json({
           message: err
         });
@@ -35,7 +31,7 @@ router.post('/', function(req, res) {
   })
   .catch(function(err) {
     console.log(err);
-    res.status(400).json({
+    res.status(500).json({
       message: err
     });
   });
