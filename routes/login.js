@@ -27,8 +27,6 @@ router.post('/', function(req, res) {
           message: err
         });
       }
-      res.send(data);
-
     });
   })
   .catch(function(err) {
