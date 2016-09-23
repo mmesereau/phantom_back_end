@@ -41,7 +41,11 @@ router.get('/', function(req, res) {
 router.post('/', function(req ,res) {
   knex('games').insert({name: req.body.name}).returning('*')
   .then(function(data) {
+    console.log(data);
     return knex('games-users').insert({games_id: data[0].id, users_id: req.body.id});
+  })
+  .then(function() {
+    res.send('success');
   })
   .catch(function(err) {
     console.log(err);
