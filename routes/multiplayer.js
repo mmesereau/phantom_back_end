@@ -52,7 +52,7 @@ router.post('/', function(req ,res) {
   });
 });
 
-router.put('/', function(req, res) {
+router.post('/join', function(req, res) {
   knex('games-users').insert(req.body)
   .then(function() {
     res.send('success');

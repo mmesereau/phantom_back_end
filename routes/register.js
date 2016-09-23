@@ -7,6 +7,7 @@ var bcrypt = require('bcrypt');
 
 
 router.post('/', function(req, res) {
+  console.log(req.body);
   hash(req.body.password)
   .then(function(result) {
     return knex('users').insert({
