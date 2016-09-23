@@ -16,6 +16,7 @@ var win = require('./routes/win.js');
 var loss = require('./routes/loss.js');
 var leaders = require('./routes/leaders.js');
 var profile = require('./routes/profile.js');
+var multiplayer = require('./routes/multiplayer.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -27,6 +28,7 @@ app.use('/login', login);
 app.use('/win', win);
 app.use('/loss', loss);
 app.use('/leaders', leaders);
+app.use('/multiplayer', multiplayer);
 app.use(expressJwt({secret: process.env.SECRET}));
 app.use('/profile', profile);
 
