@@ -15,7 +15,19 @@ router.get('/', function(req, res) {
       games[i].users = [];
       for (var j = 0; j < data.length; j++) {
         if (data[j].games_id === games[i].id) {
-          games[i].users.push(data[j].users_id);
+          games[i].users.push({id: data[j].users_id});
+        }
+      }
+    }
+    return knex('users')
+  })
+  .then(function(data) {
+    for (var i = 0; i < games.length; i++) {
+      for (var j = 0; j < games[i].users.length; j++) {
+        for (var k = 0; k < data.length; k++) {
+          if (data[k].id === games[i].users[j].id) {
+            games[i].users[j].username = data[k].nickname;
+          }
         }
       }
     }
