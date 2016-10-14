@@ -26,6 +26,9 @@ router.post('/', function(req, res) {
       return knex('users').insert({nickname: req.body.nickname, wins: 1, losses: 0});
     }
   })
+  .then(function() {
+    res.send("success");
+  })
   .catch(function(err) {
     console.log(err);
   });

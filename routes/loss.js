@@ -2,18 +2,7 @@
 var router = require('express').Router();
 var knex = require('../db/knex');
 
-// router.put('/', function(req, res) {
-//   knex('users').where('id', req.params.id)
-//   .then(function(data) {
-//     if (data[0]) {
-//       data[0].losses += 1;
-//     }
-//     return knex('users').where('id', req.params.id).update(data[0]);
-//   })
-//   .catch(function(err) {
-//     console.log(err);
-//   });
-// });
+
 
 router.post('/', function(req, res) {
   knex('users').where('nickname', req.body.nickname)
@@ -26,8 +15,11 @@ router.post('/', function(req, res) {
       return knex('users').insert({nickname: req.body.nickname, wins: 0, losses: 1});
     }
   })
+  .then(function() {
+    res.send("success");
+  })
   .catch(function(err) {
-    console.log(err);
+    console.log('hi', err);
   });
 });
 
