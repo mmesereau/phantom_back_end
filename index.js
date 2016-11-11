@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
 
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
-        console.log(err);
+        console.log('hello', err);
         res.status(err.status || 500).json(err);
     });
 }
